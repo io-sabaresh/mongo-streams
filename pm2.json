@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name": "mongoStreams-producer",
+    "script"    : "producer/index.js",
+    "instances" : 1,
+    "exec_mode" : "cluster"
+  }]
+}
