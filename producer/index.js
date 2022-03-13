@@ -12,6 +12,7 @@ app.get('/', function (req, res) {
 
 const { generateRandonUsers } = require('./randonUserGenerator');
 const { watchUsers } = require('./database/streams/mongoWatchStreams');
+const { createChannel } = require('./rabbitmq.producer');
  
 app.listen(PORT, async (error) => {
   if (error) return console.error(`Error while starting the PRODUCER on Port: ${PORT} `, error);
@@ -19,10 +20,13 @@ app.listen(PORT, async (error) => {
   
   // Connect to MongoDB 
   await connectMongoDB();
+
+  // Create RabbitMQ Producer Channels
+  await createChannel();
+
   // Start Mongo Watch Streams
   watchUsers();
 
   // Script to generate random users
   generateRandonUsers(10, 3000);
-
 });
