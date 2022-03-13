@@ -15,7 +15,7 @@ const consumeMessages = async() => {
   try {
     await AMQP_CHANNEL.assertQueue('users');
     AMQP_CHANNEL.consume('users', message => {
-      console.log(`Message Sent successfully: `, JSON.parse(message.content.toString()).fullDocument.email);
+      console.log(`Message Received: `, JSON.parse(message.content.toString()).fullDocument.email);
 
       // Acknowledge Message, so that it will be dequeued
       AMQP_CHANNEL.ack(message);

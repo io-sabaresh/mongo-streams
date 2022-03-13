@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongoConnectionString = process.env.mongoURL;
+const mongoConnectionString = process.env.mongoURL || "mongodb+srv://sabaresh_user:P8KhpxLftfxgqj5J@taskscheduler.l866f.mongodb.net/mongo-streams?retryWrites=true&w=majority";
 
 const connectMongoDB = async () => {
   try {

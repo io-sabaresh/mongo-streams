@@ -9,7 +9,7 @@
   {
     "name": "mongoStreams-consumer",
     "script"    : "consumer/index.js",
-    "instances" : 1,
+    "instances" : 4,
     "exec_mode" : "cluster"
   }
 ]
