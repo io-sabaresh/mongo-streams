@@ -28,5 +28,5 @@ app.listen(PORT, async (error) => {
   watchUsers();
 
   // Script to generate random users
-  generateRandonUsers(10, 3000);
+  generateRandonUsers(10, 0);
 });

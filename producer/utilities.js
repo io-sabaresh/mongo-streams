@@ -27,9 +27,9 @@ const getRandonUser = async () => {
 
 const delay = (ms) => {
   return new Promise((resolve, reject) => {
-    console.log('Delay Started!');
+    console.log('Producer Delay Started!');
     setTimeout(() => {
-      console.log('Delay Completed!');
+      console.log('Producer Delay Completed!');
       resolve();
     }, ms);
   })

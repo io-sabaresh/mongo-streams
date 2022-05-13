@@ -1,4 +1,5 @@
 const AMQP = require('amqplib');
+const { delay } = require('./utilities');
 let AMQP_CHANNEL = null;
 
 const createChannel = async () => {
@@ -14,11 +15,13 @@ const createChannel = async () => {
 const consumeMessages = async() => {
   try {
     await AMQP_CHANNEL.assertQueue('users');
-    AMQP_CHANNEL.consume('users', message => {
+    AMQP_CHANNEL.consume('users', async message => {
       console.log(`Message Received: `, JSON.parse(message.content.toString()).fullDocument.email);
 
       // Acknowledge Message, so that it will be dequeued
       AMQP_CHANNEL.ack(message);
+
+      await delay(5000)
 
     });
   } catch (error) {
